@@ -12,7 +12,7 @@ from pydantic import BaseModel
 
 ROOT = Path(__file__).parent
 UPLOAD_CACHE = ROOT / ".upload_cache.json"
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.8-flash"
 
 PROMPT = """You are searching a video, both what is shown and what is heard, for moments that match a description.
 
