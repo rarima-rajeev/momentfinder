@@ -1,0 +1,20 @@
+{
+  "video": "animals-all.mp4",
+  "note": "Clips 1-7 are 10.03 s each, clip 8 is 8.0 s. 'windows' are the true [start, end] seconds in the joined video.",
+  "queries": [
+    {"q": "a golden retriever running with a ball",          "windows": [[0.0, 10.03]]},
+    {"q": "a cat pushing a glass off a table",               "windows": [[10.03, 20.05]]},
+    {"q": "a hummingbird drinking from a pink flower",       "windows": [[20.05, 30.08]]},
+    {"q": "birds sitting on the backs of cows",              "windows": [[30.08, 40.11]]},
+    {"q": "a giraffe eating leaves from a tree",             "windows": [[40.11, 50.13]]},
+    {"q": "a black puppy falling down the stairs",           "windows": [[50.13, 60.16]]},
+    {"q": "ducklings crossing a wooden bridge",              "windows": [[60.16, 70.19]]},
+    {"q": "a cat jumping onto a cow",                        "windows": [[70.19, 78.19]]},
+    {"q": "cows grazing in a field",                         "windows": [[30.08, 40.11], [70.19, 78.19]]},
+    {"q": "a cat",                                           "windows": [[10.03, 20.05], [70.19, 78.19]]},
+    {"q": "a tiny animal that tumbles and tries again",      "windows": [[50.13, 60.16]]},
+    {"q": "a small creature hovering in mid-air",            "windows": [[20.05, 30.08]]},
+    {"q": "an animal with a red scarf",                      "windows": [[0.0, 10.03]]},
+    {"q": "an elephant",                                     "windows": []}
+  ]
+}
