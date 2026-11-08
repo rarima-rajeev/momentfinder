@@ -1,5 +1,6 @@
 """MomentFinder: describe a moment, jump to it in the video."""
 import subprocess
+import sys
 from pathlib import Path
 
 import streamlit as st
@@ -209,7 +210,11 @@ with right:
                         st.toast(f"{len(moments)} moment{'s' if len(moments) != 1 else ''} found", icon="🎉")
                 except Exception as e:
                     st.session_state.results = None
-                    st.error(f"Search failed: {e}")
+                    print(f"Search failed: {e!r}", file=sys.stderr)  # kept in the server log only
+                    st.error(
+                        "Something went wrong with that search. Please try again in a minute. "
+                        "If it keeps happening, the demo may be down for maintenance."
+                    )
 
     left_box.caption(f"{max(SESSION_LIMIT - st.session_state.used, 0)} of {SESSION_LIMIT} searches left")
 
