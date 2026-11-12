@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 from limits import take_daily_slot
 from moment_search import search, to_seconds
@@ -146,6 +147,23 @@ def play(i, seconds):
 
 
 st.set_page_config(page_title="MomentFinder", page_icon="🎯", layout="wide")
+
+
+# Visitor analytics (PostHog), once per visit. Streamlit runs custom scripts inside a hidden iframe,
+# so the page view is sent with the app's real address, straight away (the iframe goes on the next rerun).
+# The project key is public by design.
+if not st.session_state.get("_visit_tracked"):
+    st.session_state["_visit_tracked"] = True
+    components.html(
+        """<script type="module">
+        import posthog from "https://cdn.jsdelivr.net/npm/posthog-js@1.438.21/+esm";
+        posthog.init("phc_A7AQUNuHDWgP92hxthbkLJE53fGP2VnVBM3EbGgW9tKy", { api_host: "https://us.i.posthog.com", autocapture: false,
+          capture_pageview: false, person_profiles: "identified_only" });
+        posthog.capture("$pageview", { $current_url: "https://momentfinder-ai.streamlit.app/",
+          $host: "momentfinder-ai.streamlit.app", $pathname: "/" }, { send_instantly: true });
+        </script>""",
+        height=0,
+    )
 st.markdown(CSS, unsafe_allow_html=True)
 st.markdown(
     '<div class="hero"><h1>🎯 <span class="grad">MomentFinder</span></h1>'
